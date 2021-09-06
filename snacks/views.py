@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import snacks
+from .serializers import snacksSerializer
 
-# Create your views here.
+class snacksList(generics.ListCreateAPIView):
+    queryset = snacks.objects.all()
+    serializer_class = snacksSerializer
+    
+class snacksDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = snacks.objects.all()
+    serializer_class = snacksSerializer
